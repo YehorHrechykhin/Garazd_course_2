@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+
+    <record id="disease_root" model="hospital.disease">
+        <field name="name">Diseases</field>
+    </record>
+
+    <record id="disease_cancer" model="hospital.disease">
+        <field name="name">Cancer</field>
+        <field name="parent_id" ref="disease_root"/>
+    </record>
+    <record id="disease_heart" model="hospital.disease">
+        <field name="name">Heart Diseases</field>
+        <field name="parent_id" ref="disease_root"/>
+    </record>
+
+    <record id="disease_lung" model="hospital.disease">
+        <field name="name">Lung Cancer</field>
+        <field name="parent_id" ref="disease_cancer"/>
+    </record>
+    <record id="disease_breast" model="hospital.disease">
+        <field name="name">Breast Cancer</field>
+        <field name="parent_id" ref="disease_cancer"/>
+    </record>
+    <record id="disease_coronary" model="hospital.disease">
+        <field name="name">Coronary Artery Disease</field>
+        <field name="parent_id" ref="disease_heart"/>
+    </record>
+
+
+</odoo>

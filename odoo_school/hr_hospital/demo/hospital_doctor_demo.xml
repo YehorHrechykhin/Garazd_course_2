@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hospital_doctor_1_demo" model="hospital.doctor">
+        <field name="first_name">John</field>
+        <field name="last_name">Smith</field>
+        <field name="specialty">Cardiologist</field>
+        <field name="phone_number">0666346572</field>
+    </record>
+    <record id="hospital_doctor_2_demo" model="hospital.doctor">
+        <field name="first_name">Jane</field>
+        <field name="last_name">Doe</field>
+        <field name="specialty">Oncologist</field>
+        <field name="phone_number">0666346573</field>
+    </record>
+    <record id="hospital_doctor_3_demo" model="hospital.doctor">
+        <field name="first_name">James</field>
+        <field name="last_name">Wilson</field>
+        <field name="specialty">Neurologist</field>
+        <field name="phone_number">0666346575</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hospital_diagnosis_view_tree" model="ir.ui.view">
+        <field name="name">hospital.diagnosis.view.tree</field>
+        <field name="model">hospital.diagnosis</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date"/>
+                <field name="doctor_id"/>
+                <field name="patient_id"/>
+                <field name="disease_id"/>
+                <field name="prescribed_to_treat"/>
+                <field name="comment_of_mentor"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hospital_diagnosis_view_form" model="ir.ui.view">
+        <field name="name">hospital.diagnosis.view.form</field>
+        <field name="model">hospital.diagnosis</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="date"/>
+                        <field name="doctor_id"/>
+                        <field name="patient_id"/>
+                        <field name="disease_id"/>
+                        <field name="prescribed_to_treat"/>
+                        <field name="comment_of_mentor"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hospital_diagnosis_action_views" model="ir.actions.act_window">
+        <field name="name">Diagnosis</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.diagnosis</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>
