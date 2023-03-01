@@ -64,3 +64,10 @@ class HospitalAppointment(models.Model):
             if appointment.diagnosis_id:
                 raise UserError("You cannot archive an appointment that has a diagnosis.")
         return super().archive()
+
+    def name_get(self):
+        result = []
+        for rec in self:
+            date = rec.start_datetime
+            result.append((rec.id, date))
+        return result

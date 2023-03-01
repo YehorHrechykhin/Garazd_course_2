@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hospital_rescheduling_appointment_doctor_wizard_view_form" model="ir.ui.view">
+        <field name="name">hospital.rescheduling.appointment.doctor.wizard.view.form</field>
+        <field name="model">hospital.rescheduling.appointment.doctor.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="appointment_id" />
+                    </group>
+                    <group>
+                        <field name="doctor_id" />
+                        <field name="appointment_date" />
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_change_visit"
+                        type="object"
+                        string="Apply"
+                        class="btn-primary"/>
+                    <button special="cancel" string="Cancel" class="oe_link"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="hospital_rescheduling_appointment_doctor_wizard_action_server" model="ir.actions.server">
+        <field name="name">Rescheduling a visit to the doctor</field>
+        <field name="model_id" ref="model_hospital_rescheduling_appointment_doctor_wizard"/>
+        <field name="state">code</field>
+        <field name="code">
+             action = model.action_open_wizard()
+        </field>
+    </record>
+
+
+    <record id="menu_hospital_rescheduling_appointment_doctor_wizard" model="ir.ui.menu" >
+        <field name="name">Rescheduling a visit to the doctor</field>
+        <field name="sequence" eval="10" />
+        <field name="action" ref="hospital_rescheduling_appointment_doctor_wizard_action_server" />
+        <field name="parent_id" ref="hospital_menu_root" />
+    </record>
+
+</odoo>

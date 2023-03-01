@@ -1,7 +1,7 @@
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.html).
 {
     'name': "hr_hospital",
-    'version': "15.0.1.0.0",
+    'version': "15.0.0.0.0",
     'category': 'Human Resources',
     'summary': """Module for hospital automation""",
     'license': 'LGPL-3',
@@ -21,6 +21,7 @@
         'views/hospital_appointment_views.xml',
         'views/hospital_doctor_schedule_views.xml',
         'wizard/change_doctor_wizard.xml',
+        'wizard/rescheduling_appointment_doctor.xml',
     ],
     'demo': [
         'demo/hospital_doctor_demo.xml',
