@@ -1,4 +1,4 @@
-from odoo import api, models, fields
+from odoo import models, fields
 
 
 class HospitalDisease(models.Model):
@@ -17,7 +17,11 @@ class HospitalDisease(models.Model):
         index=True,
         ondelete='cascade'
     )
-    child_ids = fields.One2many('hospital.disease', 'parent_id', string='Child Categories')
+    child_ids = fields.One2many(
+        comodel_name='hospital.disease',
+        inverse_name='parent_id',
+        string='Child Categories'
+    )
     parent_path = fields.Char(index=True)
     description = fields.Text(string='Short description')
     symptoms = fields.Text(string='Main symptoms')

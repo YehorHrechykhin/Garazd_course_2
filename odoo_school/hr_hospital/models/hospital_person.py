@@ -13,10 +13,7 @@ class HospitalPersonMixin(models.AbstractModel):
         string='Surname',
         required=True
     )
-    full_name = fields.Char(
-        string='Full Name',
-        compute='_compute_full_name'
-    )
+    full_name = fields.Char(compute='_compute_full_name')
     phone_number = fields.Char(
         string='Telephone number',
         size=10

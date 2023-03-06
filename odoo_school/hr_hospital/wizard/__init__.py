@@ -1,2 +1,4 @@
-from . import change_doctor_wizard
-from . import rescheduling_appointment_doctor
+
+from . import hospital_change_doctor_wizard
+from . import hospital_create_disease_report_wizard
+from . import hospital_rescheduling_appointment_doctor_wizard

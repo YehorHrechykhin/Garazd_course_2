@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="hospital_create_report_disease_wizard_view_form" model="ir.ui.view">
+        <field name="name">hospital.create.disease.report.wizard.form</field>
+        <field name="model">hospital.create.disease.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Report disease">
+                <group>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </group>
+                <footer>
+                    <button name="action_print_disease_report" type="object" string="Report" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_create_disease_report" model="ir.actions.act_window">
+        <field name="name">Report disease</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.create.disease.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="hospital_create_report_disease_wizard_view_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

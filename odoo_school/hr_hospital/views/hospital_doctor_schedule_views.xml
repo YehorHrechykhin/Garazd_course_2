@@ -37,9 +37,9 @@
         <field name="context">{}</field>
     </record>
 
-    <menuitem id="menu_hospital_doctor_schedule"
-              name="Schedule"
-              parent="menu_hospital_doctor"
+    <menuitem id="hospital_doctor_schedule_submenu"
+              name="Doctor Schedule"
+              parent="hospital_settings_menu"
               action="hospital_doctor_schedule_action_views"
               sequence="10"/>
 

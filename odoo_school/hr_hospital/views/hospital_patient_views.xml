@@ -6,6 +6,14 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <tree>
+                <header>
+                    <button name="%(server_action_change_doctor_wizard)d" string="Change doctor"
+                            class="btn-primary"
+                            type="action"/>
+                    <button name="%(action_change_appointment_time)d" string="Change appointment time"
+                            class="btn-primary"
+                            type="action"/>
+                </header>
                 <field name="full_name"/>
                 <field name="passport_data"/>
                 <field name="doctor_id"/>
@@ -23,6 +31,11 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="%(action_change_appointment_time)d" string="Change appointment time"
+                            class="btn-primary"
+                            type="action"/>
+                </header>
                 <sheet>
                     <group>
                         <group>
@@ -59,7 +72,7 @@
         </field>
     </record>
 
-    <menuitem id="menu_hospital_patient"
+    <menuitem id="hospital_patient_menu"
               name="Patients"
               parent="hospital_menu_root"
               action="hospital_patient_action_views"

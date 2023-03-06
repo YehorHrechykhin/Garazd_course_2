@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import _, models, fields, api
 
 
 class HospitalDoctorSchedule(models.Model):
@@ -7,13 +7,9 @@ class HospitalDoctorSchedule(models.Model):
 
     doctor_id = fields.Many2one(
         comodel_name='hospital.doctor',
-        string='Doctor',
         required=True
     )
-    appointment_date = fields.Date(
-        string='Appointment Date',
-        required=True
-    )
+    appointment_date = fields.Date(required=True)
     appointment_hour = fields.Selection(
         [
             ('08:00', '08:00'),
@@ -30,13 +26,12 @@ class HospitalDoctorSchedule(models.Model):
             ('19:00', '19:00'),
             ('20:00', '20:00'),
         ],
-        string='Appointment Hour',
         required=True
     )
 
     @api.constrains('doctor_id', 'appointment_date', 'appointment_hour')
     def check_reception_hour(self):
-        # Checking that appointment hours are not repeated.
+        """Checking that appointment hours are not repeated."""
         for schedule in self:
             domain = [
                 ('doctor_id', '=', schedule.doctor_id.id),
@@ -45,5 +40,6 @@ class HospitalDoctorSchedule(models.Model):
             ]
             if len(self.search(domain)) > 1:
                 raise models.ValidationError(
-                    "This doctor already has a reception scheduled for this hour"
+                    _("This doctor already has a reception scheduled"
+                      " for this hour")
                 )

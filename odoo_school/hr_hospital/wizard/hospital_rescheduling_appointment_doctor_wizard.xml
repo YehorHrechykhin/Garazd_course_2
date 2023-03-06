@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="hospital_change_visit_time_view_form" model="ir.ui.view">
+        <field name="name">hospital.rescheduling.appointment.doctor.wizard.form</field>
+        <field name="model">hospital.rescheduling.appointment.doctor.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Change appointment time">
+                <group>
+                    <field name="doctor_id"/>
+                    <field name="start_date"/>
+                </group>
+                <footer>
+                    <button name="action_change_appointment_time" type="object" string="Change" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_change_appointment_time" model="ir.actions.act_window">
+        <field name="name">Change Appointment Time</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.rescheduling.appointment.doctor.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="hospital_change_visit_time_view_form"/>
+        <field name="target">new</field>
+        <field name='binding_model_id' ref='model_hospital_patient'/>
+        <field name='binding_view_types'>list</field>
+        <field name='binding_type'>action</field>
+    </record>
+
+</odoo>

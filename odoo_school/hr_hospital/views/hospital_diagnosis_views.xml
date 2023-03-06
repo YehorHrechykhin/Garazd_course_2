@@ -6,7 +6,7 @@
         <field name="model">hospital.diagnosis</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="date"/>
+                <field name="diagnosis_date"/>
                 <field name="doctor_id"/>
                 <field name="patient_id"/>
                 <field name="disease_id"/>
@@ -23,7 +23,7 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="date"/>
+                        <field name="diagnosis_date"/>
                         <field name="doctor_id"/>
                         <field name="patient_id"/>
                         <field name="disease_id"/>

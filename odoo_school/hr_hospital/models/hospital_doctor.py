@@ -13,6 +13,5 @@ class HospitalDoctor(models.Model):
     is_intern = fields.Boolean()
     mentor_id = fields.Many2one(
         comodel_name='hospital.doctor',
-        string='Mentor',
-        domain=[('is_intern', '=', False)])
-
+        domain=[('is_intern', '=', False)]
+    )

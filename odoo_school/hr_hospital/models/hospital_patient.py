@@ -15,10 +15,7 @@ class HospitalPatient(models.Model):
         store=True
     )
     passport_data = fields.Char(string='Passport №')
-    contact_person_id = fields.Many2one(
-        comodel_name='hospital.contact_person',
-        string='Contact person'
-    )
+    contact_person_id = fields.Many2one(comodel_name='hospital.contact_person')
     doctor_id = fields.Many2one(
         comodel_name='hospital.doctor',
         string='Attending doctor',
@@ -27,7 +24,7 @@ class HospitalPatient(models.Model):
 
     @api.depends('birthday')
     def _compute_age(self):
-        # Calculated age from the current date
+        """Calculated age from the current date"""
         for record in self:
             if record.birthday:
                 age = (fields.Date.today() - record.birthday).days // 365
@@ -35,10 +32,10 @@ class HospitalPatient(models.Model):
 
     @api.onchange('doctor_id')
     def onchange_doctor_id(self):
-        # Create new record to hospital.doctor.history when you change patient's doctor
+        """Create new record to hospital.doctor.history
+         when you change patient's doctor"""
         if self.doctor_id:
             self.env['hospital.doctor.history'].create({
                 'patient_id': self._origin.id,
                 'doctor_id': self.doctor_id.id,
             })
-
