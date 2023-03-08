@@ -85,11 +85,7 @@
                                 <field name="specialty"/>
                             </div>
                             <div>
-                                <strong>Is Intern:</strong>
-                                <field name="is_intern"/>
-                            </div>
-                            <div>
-                                <button name="action_new_appointment" string="New Appointment" class="btn-primary"
+                                <button name="action_new_appointment" string="New Appointment" class="btn btn-primary"
                                         type="object">
                                     <span>New Appointment</span>
                                 </button>
