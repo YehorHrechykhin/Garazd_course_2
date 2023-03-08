@@ -11,7 +11,6 @@ class HospitalDoctorHistory(models.Model):
     )
     patient_id = fields.Many2one(
         comodel_name='hospital.patient',
-        required=True,
         ondelete='cascade'
     )
     doctor_id = fields.Many2one(

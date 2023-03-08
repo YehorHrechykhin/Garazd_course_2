@@ -43,3 +43,10 @@ class HospitalDoctorSchedule(models.Model):
                     _("This doctor already has a reception scheduled"
                       " for this hour")
                 )
+
+    def name_get(self):
+        result = []
+        for rec in self:
+            name = rec.doctor_id.full_name
+            result.append((rec.id, name))
+        return result

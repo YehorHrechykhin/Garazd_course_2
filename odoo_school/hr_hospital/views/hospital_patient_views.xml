@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <tree>
                 <header>
-                    <button name="%(server_action_change_doctor_wizard)d" string="Change doctor"
+                    <button name="%(action_change_doctor_wizard)d" string="Change doctor"
                             class="btn-primary"
                             type="action"/>
                     <button name="%(action_change_appointment_time)d" string="Change appointment time"
@@ -32,9 +32,12 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="%(action_change_appointment_time)d" string="Change appointment time"
-                            class="btn-primary"
-                            type="action"/>
+                    <button name="action_open_appointment_history" string="Appointment history" class="btn-primary"
+                            type="object"/>
+                    <button name="action_open_analysis_history" string="Analysis history" class="btn-primary"
+                            type="object"/>
+                    <button name="action_new_appointment" string="New Appointment" class="btn-primary"
+                            type="object"/>
                 </header>
                 <sheet>
                     <group>
@@ -54,6 +57,26 @@
                             <field name="age"/>
                         </group>
                     </group>
+                    <notebook>
+                        <page string="Change doctor history" name="change_doctor_history">
+                            <field name="change_doctor_history_ids" readonly="1">
+                                <tree>
+                                    <field name="doctor_id"/>
+                                    <field name="set_date"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Diagnosis history" name="diagnosis_history">
+                            <field name="diagnosis_history_ids" readonly="1">
+                                <tree>
+                                    <field name="disease_id"/>
+                                    <field name="doctor_id"/>
+                                    <field name="prescribed_to_treat"/>
+                                    <field name="diagnosis_date"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>

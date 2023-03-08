@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hospital_analysis_view_tree" model="ir.ui.view">
+        <field name="name">hospital.analysis.view.tree</field>
+        <field name="model">hospital.analysis</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="phone_number"/>
+                <field name="result"/>
+                <field name="result_file"/>
+                <field name="set_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hospital_analysis_view_form" model="ir.ui.view">
+        <field name="name">hospital.analysis.view.form</field>
+        <field name="model">hospital.analysis</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="patient_id"/>
+                            <field name="doctor_id"/>
+                            <field name="phone_number"/>
+                            <field name="result"/>
+                            <field name="result_file"/>
+                            <field name="set_date"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hospital_analysis_view_pivot" model="ir.ui.view">
+        <field name="name">hospital.analysis.view.pivot</field>
+        <field name="model">hospital.analysis</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="doctor_id" type="row"/>
+                <field name="name" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="hospital_analysis_view_search" model="ir.ui.view">
+        <field name="name">hospital.analysis.view.search</field>
+        <field name="model">hospital.analysis</field>
+        <field name="arch" type="xml">
+            <search string="Analysis">
+                <field name="patient_id"/>
+                <field name="phone_number"/>
+                <group expand="1" string="Group By">
+                    <filter string="Analysis type" name="analysis_type" context="{'group_by':'name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="hospital_analysis_action_views" model="ir.actions.act_window">
+        <field name="name">Analyses</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.analysis</field>
+        <field name="view_mode">tree,form,pivot</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add your first analysis !
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="hospital_analysis_menu"
+              name="Analyses"
+              parent="hospital_menu_root"
+              action="hospital_analysis_action_views"
+              sequence="40"/>
+
+</odoo>

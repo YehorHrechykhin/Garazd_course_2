@@ -9,12 +9,12 @@
     <menuitem id="hospital_settings_menu"
               name="Settings"
               parent="hospital_menu_root"
-              sequence="40"/>
+              sequence="50"/>
 
     <menuitem id="hospital_reporting_submenu"
               name="Disease Report"
               parent="hospital_settings_menu"
               action="action_create_disease_report"
-              sequence="20"/>
+              sequence="50"/>
 
 </odoo>

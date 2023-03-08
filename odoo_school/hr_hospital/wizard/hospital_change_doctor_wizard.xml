@@ -23,7 +23,7 @@
         </field>
     </record>
 
-    <record id='server_action_change_doctor_wizard' model='ir.actions.act_window'>
+    <record id='action_change_doctor_wizard' model='ir.actions.act_window'>
         <field name='name'>Change doctor</field>
         <field name='res_model'>hospital.change.doctor.wizard</field>
         <field name='view_mode'>form</field>

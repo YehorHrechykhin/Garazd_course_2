@@ -35,12 +35,42 @@
         </field>
     </record>
 
+    <record id="hospital_diagnosis_view_pivot" model="ir.ui.view">
+        <field name="name">hospital.diagnosis.view.pivot</field>
+        <field name="model">hospital.diagnosis</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="disease_id" type="row"/>
+                <field name="diagnosis_date" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="hospital_diagnosis_view_graph" model="ir.ui.view">
+        <field name="name">hospital.diagnosis.view.graph</field>
+        <field name="model">hospital.diagnosis</field>
+        <field name="arch" type="xml">
+            <graph>
+                <field name="disease_id"/>
+                <field name="diagnosis_date"/>
+            </graph>
+        </field>
+    </record>
+
     <record id="hospital_diagnosis_action_views" model="ir.actions.act_window">
         <field name="name">Diagnosis</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hospital.diagnosis</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,pivot,graph</field>
         <field name="context">{}</field>
     </record>
+
+
+
+    <menuitem id="hospital_diagnosis_submenu"
+              name="Diagnosis"
+              parent="hospital_settings_menu"
+              action="hospital_diagnosis_action_views"
+              sequence="20"/>
 
 </odoo>

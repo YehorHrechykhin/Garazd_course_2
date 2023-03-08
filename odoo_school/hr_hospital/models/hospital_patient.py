@@ -21,6 +21,18 @@ class HospitalPatient(models.Model):
         string='Attending doctor',
         required=True
     )
+    change_doctor_history_ids = fields.One2many(
+        comodel_name='hospital.doctor.history',
+        inverse_name='patient_id',
+    )
+    diagnosis_history_ids = fields.One2many(
+        comodel_name='hospital.diagnosis',
+        inverse_name='patient_id',
+    )
+    analysis_history_ids = fields.One2many(
+        comodel_name='hospital.analysis',
+        inverse_name='patient_id'
+    )
 
     @api.depends('birthday')
     def _compute_age(self):
@@ -39,3 +51,38 @@ class HospitalPatient(models.Model):
                 'patient_id': self._origin.id,
                 'doctor_id': self.doctor_id.id,
             })
+
+    def action_open_appointment_history(self):
+
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Appointment',
+            'res_model': 'hospital.appointment',
+            'domain': [('patient_id', '=', self.id)],
+            'context': {},
+            'views': [[False, 'tree']],
+            'target': 'current',
+        }
+
+    def action_open_analysis_history(self):
+
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Analyses',
+            'res_model': 'hospital.analysis',
+            'domain': [('patient_id', '=', self.id)],
+            'context': {},
+            'views': [[False, 'tree']],
+            'target': 'current',
+        }
+
+    def action_new_appointment(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'New Appointment',
+            'res_model': 'hospital.appointment',
+            'domain': [],
+            'context': {'default_patient_id': self.id},
+            'views': [[False, 'form']],
+            'target': 'current',
+        }
