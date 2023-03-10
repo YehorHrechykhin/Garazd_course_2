@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <record id="paperformat_lowmargin" model="report.paperformat">
+        <field name="name">Doctor Info</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">10</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <report
+            id="action_report_doctor"
+            string="Doctors Report"
+            model="hospital.doctor"
+            report_type="qweb-pdf"
+            file="hr_hospital.report_doctor"
+            name="hr_hospital.report_doctor"
+            paperformat="paperformat_lowmargin"
+            print_report_name="'Doctor - %s' % (object.display_name)"
+    />
+    </data>
+</odoo>

@@ -72,18 +72,56 @@
         <field name="name">hospital.doctor.kanban</field>
         <field name="model">hospital.doctor</field>
         <field name="arch" type="xml">
-            <kanban class="o_kanban_mobile" sample="1">
+            <kanban class="o_kanban_mobile">
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click">
-                            <div>
+                            <div class="o_kanban_card_full_name">
                                 <strong>Full Name:</strong>
                                 <field name="full_name"/>
                             </div>
-                            <div>
-                                <strong>Specialty:</strong>
+
+                            <div class="o_kanban_card_specialty">
+                                <strong>Medical specialty:</strong>
                                 <field name="specialty"/>
                             </div>
+
+                            <div class="o_dropdown_kanban dropdown">
+                                <a class="dropdown-toggle btn"
+                                   data-toggle="dropdown" href="#">
+                                    <span class="fa fa-ellipsis-v"
+                                          aria-hidden="true"/>
+                                </a>
+                                <div class="o_kanban_card_manage_setting row mt16">
+                                    <div class="dropdown-menu" role="menu">
+                                        <t t-if="widget.editable">
+                                            <a role="menuitem" type="edit"
+                                               class="dropdown-item">Edit
+                                            </a>
+                                        </t>
+                                        <t t-if="widget.deletable">
+                                            <a role="menuitem"
+                                               type="delete"
+                                               class="dropdown-item">Delete
+                                            </a>
+                                        </t>
+                                        <ul class="oe_kanban_colorpicker"
+                                            data-field="color"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12" style="height: 15px;"/>
+
+                            <div class="container o_kanban_card_content">
+                                <div class="row">
+                                    <div class="col-6 o_kanban_primary_right">
+                                        <field name="patient_ids"
+                                               widget="many2many_tags"/>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div>
                                 <button name="action_new_appointment" string="New Appointment" class="btn btn-primary"
                                         type="object">
@@ -104,7 +142,7 @@
             <search string="">
                 <filter name="Mentors" domain="[('is_intern','=',False),('intern_ids','!=',False)]"/>
                 <filter name="Interns" domain="[('is_intern','=',True)]"/>
-                <filter name="Without patient" string="Without patient" domain="[('patients_ids','=',False)]"/>
+                <filter name="Without patient" string="Without patient" domain="[('patient_ids','=',False)]"/>
                 <group expand="1" string="Group By">
                     <filter string="Specialty" name="specialty" context="{'group_by':'specialty'}"/>
                 </group>

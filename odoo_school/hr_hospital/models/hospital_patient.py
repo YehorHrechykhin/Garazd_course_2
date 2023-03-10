@@ -14,6 +14,12 @@ class HospitalPatient(models.Model):
         compute='_compute_age',
         store=True
     )
+    degree_of_sickness = fields.Selection(
+        [('1', 'Good'),
+         ('2', 'Normal'),
+         ('3', 'Bad')],
+        default='1', required=True
+    )
     passport_data = fields.Char(string='Passport №')
     contact_person_id = fields.Many2one(comodel_name='hospital.contact_person')
     doctor_id = fields.Many2one(

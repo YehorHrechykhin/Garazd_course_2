@@ -3,26 +3,26 @@
 
     <template id="hospital_report_disease_details">
         <t t-call="web.html_container">
-        <table>
-            <tr>
-                <th>
-                    <span>Disease</span>
-                </th>
-                <th>
-                    <span>Count</span>
-                </th>
-            </tr>
-            <t t-foreach="diseases" t-as="line">
+            <table>
                 <tr>
-                    <td>
-                        <span t-esc="line['disease']"/>
-                    </td>
-                    <td>
-                        <span t-esc="line['count']"/>
-                    </td>
+                    <th>
+                        <span>Disease</span>
+                    </th>
+                    <th>
+                        <span>Count</span>
+                    </th>
                 </tr>
-            </t>
-        </table>
+                <t t-foreach="diseases" t-as="line">
+                    <tr>
+                        <td>
+                            <span t-esc="line['disease']"/>
+                        </td>
+                        <td>
+                            <span t-esc="line['count']"/>
+                        </td>
+                    </tr>
+                </t>
+            </table>
         </t>
     </template>
 
